@@ -1,0 +1,40 @@
+# [ Softeer ] Yeah, but How?
+
+### [ 문제 정보 ]
+> **기타**: https://softeer.ai/practice/9498
+> 
+> **난이도**: 2
+>
+> **유형**: #문자열
+
+
+### [ 문제 풀이 ]
+```JavaScript
+const fs = require("fs");
+const s = fs.readFileSync(0).toString().trim();
+
+const answer = [];
+
+for(let i = 0; i < s.length; i++) {
+    if(s[i + 1] === "(") {
+        if(s[i] === "(") answer.push(s[i]);
+        else {
+            answer.push(s[i]);
+            answer.push("+");
+        }
+    } else {
+        if(s[i] === "(") {
+            answer.push(s[i]);
+            answer.push("1");
+        }
+        else answer.push(s[i]);
+    }
+}
+
+console.log(answer.join(""));
+```
+위 코드에서 1을 넣은 자리에 1+1을 넣으면 하나의 테스트 케이스를 통과하지 못함<br>문제에서 수식의 길이를 제한했기 때문에, 1+1 대신 1을 사용해서 길이를 줄여주니까 통과 !
+
+
+---
+@www.codrive.co.kr
